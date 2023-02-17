@@ -61,12 +61,12 @@ body {
     height: 100vh;
     padding: 124px 66px;
     background: #000000;
-    transform: translateX(100%);
+    transform: translateX(100%) scaleX(0.25);
     transition: transform 700ms ease-in-out;
 }
 
 .menu.active {
-    transform: translateX(0);
+    transform: translateX(0) scaleX(1);
 }
 
 .scrollablemenu {
@@ -99,6 +99,11 @@ body {
 }
 
 /* Hero */
+.hero {
+    margin: 0;
+    padding: 0;
+}
+
 .hero #heroVideo {
     position: relative;
     padding: 0px;
@@ -133,17 +138,79 @@ body {
 .hero .herocontent h1 {
     font-size: 59.3px;
     font-weight: 700;
-    line-height: 100%;
-    width: 700px;
+    width: 600px;
+    animation: slideinup 1s cubic-bezier(0, 1, 0, 1);
 }
 
 .hero .herocontent h2 {
     font-size: 22.65px;
     font-weight: 500;
-    line-height: 100%;
-    width: 500px;
+    width: 600px;
     margin-bottom: 22px;
     color: #0066FF;
+    animation: slideinup 1s cubic-bezier(0, 1, 0, 1);
+}
+
+.hero .herocontent p {
+    font-size: 22.65px;
+    font-weight: 400;
+    width: 600px;
+    margin: 22px 0 44px 0;
+    animation: slideinup 1s cubic-bezier(0, 1, 0, 1);
+}
+
+em {
+    font-style: normal;
+    color: #0066FF!important;
+}
+
+/* Buttons */
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: "HarmonyOS Sans", sans-serif;
+    font-size: 22.65px;
+    font-weight: 500;
+    line-height: 100%;
+    text-align: center;
+    padding: 22px 22px;
+    border-radius: 22px;
+    /* Center Alignment */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+button.primary { color: #FFFFFF; background: #0066FF; }
+button.primary svg path { fill: #000000; transition: fill 200ms ease-in-out; }
+button.primary:hover { color: #000000; background: #7499FC; }
+button.primary:hover svg path { fill: #000000; }
+
+button.secondary { color: #000000!important; background: #FAFAFA; }
+button.secondary svg path { fill: #0066FF; transition: fill 200ms ease-in-out; }
+button.secondary:hover { color: #000000; background: #D3D3D3; }
+button.secondary:hover svg path { fill: #0066FF; }
+
+button svg {
+    margin-left: 13.6px;
+}
+
+.buttons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.buttons a {
+    margin-right: 13.6px;
+}
+
+/* Links */
+a.nounderline {
+    text-decoration: none!important;
 }
 
 /* Custom scrollbar */
@@ -160,6 +227,59 @@ body {
     border-radius: 8px 8px 4px 4px;
 }
 
+/* Layouts */
+
+.dualsection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    height: 60vh;
+}
+
+.dualsection .leftsection {
+    flex: 50%;
+    height: 100%;
+    margin: 22px;
+    padding: 44px;
+    /* Display */
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.sectioncontent h1 {
+    color: #FFF;
+}
+
+.dualsection .rightsection {
+    flex: 50%;
+    height: 100%;
+    margin: 22px;
+    /* Display */
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Regular Text */
+h1 {
+    font-size: 36.65px;
+    font-weight: 700;
+    line-height: 100%;
+    margin-bottom: 22px;
+}
+
+h2 {
+    font-size: 22.65px;
+    font-weight: 500;
+    line-height: 100%;
+    margin-bottom: 22px;
+    color: #0066FF;
+}
+
 /* Animation */
 .nav .navlogo {
     animation: slideinleft 1s cubic-bezier(0, 1, 0, 1);
@@ -167,6 +287,11 @@ body {
 
 .nav .navlinks .menuicon {
     animation: slideinright 1s cubic-bezier(0, 1, 0, 1);
+    transition: transform 2s cubic-bezier(0, 1, 0, 1);
+}
+
+.nav .navlinks .menuicon.active {
+    transform: rotate(45deg);
 }
 
 @keyframes slideinleft {
@@ -184,5 +309,14 @@ body {
     }
     100% {
         transform: translateX(0) scaleX(1);
+    }
+}
+
+@keyframes slideinup {
+    0% {
+        transform: translateY(200px) scaleY(2);
+    }
+    100% {
+        transform: translateY(0) scaleY(1);
     }
 }
